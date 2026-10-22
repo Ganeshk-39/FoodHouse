@@ -1,0 +1,23 @@
+# Eclipse & Java Build outputs
+build/
+bin/
+target/
+*.class
+
+# Eclipse specific metadata
+.metadata/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Scratch test runs
+scratch/

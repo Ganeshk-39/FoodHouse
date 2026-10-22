@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodHouse • Next-Gen Futuristic EV Delivery Fleet Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4b5a;
+            --primary-dark: #e02d3d;
+            --primary-glow: rgba(255, 75, 90, 0.45);
+            --accent-orange: #ff7a45;
+            --accent-gold: #fbbf24;
+            --accent-green: #10b981;
+            --accent-blue: #38bdf8;
+            --bg-base: #060913;
+            --bg-card: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glass: rgba(255, 255, 255, 0.12);
+            --radius-pill: 9999px;
+            --radius-lg: 18px;
+            --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 36px;
+            background: rgba(10, 14, 26, 0.95);
+            border-bottom: 1px solid var(--border-glass);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-symbol {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-orange) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            box-shadow: 0 4px 14px var(--primary-glow);
+        }
+
+        /* ====================================================================
+           HERO BANNER: Full-Width Cinematic Background Highway & Moving Bike
+
+        
+        
+        /* ====================================================================
+           3. MASTER PRODUCTION-GRADE HERO BANNER STYLES (FOODHOUSE REFERENCE)
+           ==================================================================== */
+        .hero-banner {
+            --speed-mult: 1;
+            --road-dur: 0.35s;
+            --bike-drive-dur: 10s;
+            
+            position: relative;
+            overflow: hidden;
+            padding: 34px 20px 22px;
+            background: 
+                radial-gradient(circle at 50% 12%, rgba(255, 69, 58, 0.08) 0%, transparent 55%),
+                radial-gradient(circle at 85% 65%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 15% 65%, rgba(255, 149, 0, 0.06) 0%, transparent 50%),
+                linear-gradient(180deg, #050811 0%, #090e1c 55%, #050811 100%);
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Dynamic Speed Modes */
+        .hero-banner.speed-turbo {
+            --speed-mult: 1.6;
+            --road-dur: 0.20s;
+            --bike-drive-dur: 6.5s;
+        }
+
+        .hero-banner.speed-nitro {
+            --speed-mult: 2.6;
+            --road-dur: 0.09s;
+            --bike-drive-dur: 3.8s;
+        }
+
+        /* Ambient Glow & Star Dust */
+        .hero-ambient-stars {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(1.5px 1.5px at 15% 25%, rgba(255, 255, 255, 0.7) 100%, transparent),
+                radial-gradient(1.5px 1.5px at 35% 15%, rgba(255, 255, 255, 0.5) 100%, transparent),
+                radial-gradient(1.5px 1.5px at 65% 22%, rgba(255, 255, 255, 0.6) 100%, transparent),
+                radial-gradient(1.5px 1.5px at 85% 35%, rgba(255, 255, 255, 0.5) 100%, transparent),
+                radial-gradient(2px 2px at 50% 10%, rgba(255, 215, 0, 0.6) 100%, transparent);
+            background-size: 550px 320px;
+            pointer-events: none;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        /* Centered Floating Dispatch Capsule (Ref Match) */
+        .live-dispatch-ticker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(13, 19, 33, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+            padding: 7px 20px;
+            border-radius: var(--radius-pill);
+            margin: 0 auto 14px auto;
+            max-width: 92%;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .ticker-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #10b981;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            white-space: nowrap;
+        }
+
+        .ticker-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px #10b981;
+            animation: pulseGreen 1.4s infinite;
+        }
+
+        @keyframes pulseGreen {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(1.3); }
+        }
+
+        .ticker-divider {
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 300;
+        }
+
+        .ticker-message {
+            color: #e2e8f0;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: opacity 0.35s ease;
+        }
+
+        /* Next-Gen Fleet Pill (Ref Match) */
+        .hero-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 14px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 69, 58, 0.1);
+            border: 1px solid rgba(255, 69, 58, 0.32);
+            color: #ff6b7a;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            margin: 0 auto 14px auto;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Main Forefront Container */
+        .hero-container {
+            position: relative;
+            z-index: 10;
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Main Heading (Ref Match) */
+        .hero-headline {
+            max-width: 660px;
+            font-size: clamp(30px, 3.8vw, 46px);
+            font-weight: 800;
+            line-height: 1.16;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin: 0 0 10px 0;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-brand-foodhouse {
+            color: #ff3b30;
+            font-weight: 900;
+        }
+
+        .hero-brand-delivers {
+            background: linear-gradient(135deg, #ff453a 0%, #ff9500 50%, #ffcc00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* Subtitle */
+        .hero-subtext {
+            font-size: 14px;
+            line-height: 1.55;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+            font-weight: 400;
+        }
+
+        /* ====================================================================
+           SYMMETRICAL FLOATING GOURMET FOOD CARDS (LEFT & RIGHT)
+           ==================================================================== */
+        .floating-food-card {
+            position: absolute;
+            z-index: 8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 14px 8px 10px;
+            border-radius: 20px;
+            background: rgba(13, 19, 33, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .floating-food-card:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        /* Left Card: Royal Chicken Dum Biryani */
+        .card-left {
+            top: 22%;
+            left: clamp(18px, 3.2vw, 55px);
+            border: 1.5px solid rgba(255, 149, 0, 0.75);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), 0 0 24px rgba(255, 149, 0, 0.2);
+            animation: floatCardLeft 5s ease-in-out infinite;
+        }
+
+        @keyframes floatCardLeft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        /* Right Card: Woodfired Truffle Pizza */
+        .card-right {
+            top: 22%;
+            right: clamp(18px, 3.2vw, 55px);
+            border: 1.5px solid rgba(56, 189, 248, 0.75);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), 0 0 24px rgba(56, 189, 248, 0.2);
+            animation: floatCardRight 5.5s ease-in-out infinite;
+        }
+
+        @keyframes floatCardRight {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(7px); }
+        }
+
+        .food-thumb-circle {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .card-left .food-thumb-circle {
+            border: 2px solid #ff9500;
+            box-shadow: 0 0 14px rgba(255, 149, 0, 0.45);
+        }
+
+        .card-right .food-thumb-circle {
+            border: 2px solid #38bdf8;
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+        }
+
+        .food-thumb-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-food-card:hover .food-thumb-img {
+            transform: scale(1.1);
+        }
+
+        .food-card-details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            text-align: left;
+        }
+
+        .food-card-title {
+            color: #ffffff;
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        .food-card-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .badge-hot {
+            color: #ff8533;
+            background: rgba(255, 107, 0, 0.15);
+            border: 1px solid rgba(255, 107, 0, 0.35);
+            padding: 2px 7px;
+            border-radius: var(--radius-pill);
+        }
+
+        .badge-courier {
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            padding: 2px 7px;
+            border-radius: var(--radius-pill);
+        }
+
+        .badge-star {
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.15);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            padding: 2px 7px;
+            border-radius: var(--radius-pill);
+        }
+
+        .badge-time {
+            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 2px 7px;
+            border-radius: var(--radius-pill);
+        }
+
+        .card-arrow-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            margin-left: 4px;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .floating-food-card:hover .card-arrow-circle {
+            background: #ff4b5a;
+            border-color: #ff4b5a;
+            transform: translateX(2px);
+        }
+
+        /* Outer Decorative Plates (Lower Left & Right in Ref) */
+        .decor-plate {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7));
+            opacity: 0.88;
+            transition: transform 0.4s ease;
+        }
+
+        .decor-plate-left {
+            bottom: 45px;
+            left: clamp(24px, 3.5vw, 65px);
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255, 149, 0, 0.45);
+        }
+
+        .decor-plate-right {
+            bottom: 45px;
+            right: clamp(24px, 3.5vw, 65px);
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(56, 189, 248, 0.45);
+        }
+
+        .decor-plate-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ====================================================================
+           PREMIUM SEARCH BAR (Exact Match to Reference Image)
+           ==================================================================== */
+        .hero-search-card {
+            width: 100%;
+            max-width: 760px;
+            background: rgba(13, 19, 33, 0.94);
+            border: 1.5px solid rgba(56, 189, 248, 0.35);
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.16);
+            border-radius: var(--radius-pill);
+            display: flex;
+            align-items: center;
+            padding: 6px 8px 6px 8px;
+            gap: 10px;
+            margin: 0 auto 18px auto;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: border-color 0.25s, box-shadow 0.25s;
+            box-sizing: border-box;
+        }
+
+        .hero-search-card:focus-within {
+            border-color: #38bdf8;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.3);
+        }
+
+        /* 1. Location Selector - Premium Dark Navy Theme */
+        .hero-location-container {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .hero-location-pill {
+            background: #0d1527 !important;
+            border: 1px solid rgba(56, 189, 248, 0.32) !important;
+            border-radius: var(--radius-pill) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 7px !important;
+            color: #ffffff !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            font-family: inherit !important;
+            white-space: nowrap !important;
+            cursor: pointer !important;
+            padding: 8px 14px !important;
+            transition: all 0.2s ease !important;
+            outline: none !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45) !important;
+            box-sizing: border-box !important;
+            user-select: none !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
+        }
+
+        .hero-location-pill:hover {
+            background: #15223c !important;
+            border-color: rgba(56, 189, 248, 0.65) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25) !important;
+            transform: translateY(-0.5px);
+        }
+
+        .hero-location-pill:focus-visible {
+            border-color: #38bdf8 !important;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35) !important;
+        }
+
+        .hero-location-pill svg.icon-pin {
+            color: #ff3b30 !important;
+            flex-shrink: 0;
+        }
+
+        .hero-location-pill svg.icon-caret {
+            color: #94a3b8 !important;
+            flex-shrink: 0;
+            transition: transform 0.25s ease !important;
+        }
+
+        .hero-location-pill[aria-expanded="true"] svg.icon-caret {
+            transform: rotate(180deg) !important;
+            color: #38bdf8 !important;
+        }
+
+        /* Opened Dropdown Menu */
+        .location-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            min-width: 220px;
+            background: #0b1120 !important;
+            border: 1px solid rgba(56, 189, 248, 0.38) !important;
+            border-radius: 14px !important;
+            padding: 6px !important;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85), 0 0 24px rgba(56, 189, 248, 0.2) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 100;
+            display: none;
+            flex-direction: column;
+            gap: 3px;
+            box-sizing: border-box;
+        }
+
+        .location-dropdown.show {
+            display: flex;
+            animation: dropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .location-option {
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            color: #cbd5e1 !important;
+            font-size: 12.5px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.18s ease;
+            box-sizing: border-box;
+        }
+
+        .location-option:hover {
+            background: rgba(56, 189, 248, 0.14) !important;
+            color: #ffffff !important;
+        }
+
+        .location-option.active {
+            background: rgba(56, 189, 248, 0.22) !important;
+            color: #ffffff !important;
+            font-weight: 700;
+        }
+
+        .location-option .loc-badge {
+            font-size: 10.5px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.08);
+            color: #94a3b8;
+            padding: 2px 7px;
+            border-radius: var(--radius-pill);
+        }
+
+        .location-option.active .loc-badge {
+            background: rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+        }
+
+        /* 2. Search Input Wrap */
+        .search-input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex: 1;
+            min-width: 180px;
+            padding: 0 4px;
+        }
+
+        .search-input-wrap svg.icon-glass {
+            color: #ff4b5a;
+            flex-shrink: 0;
+        }
+
+        .hero-search-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 13.5px;
+            font-weight: 500;
+            font-family: inherit;
+            padding: 8px 0;
+            line-height: 1.4;
+        }
+
+        .hero-search-input::placeholder {
+            color: rgba(255, 255, 255, 0.52);
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        [data-theme="light"] .hero-search-input::placeholder {
+            color: #94a3b8;
+        }
+
+        /* 3. Find Food Search Button */
+        .hero-search-btn {
+            background: linear-gradient(135deg, #ff453a 0%, #ff2d55 100%);
+            border: none;
+            outline: none;
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: var(--radius-pill);
+            font-size: 13.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
+            box-shadow: 0 4px 18px rgba(255, 69, 58, 0.45);
+            transition: all 0.2s ease;
+        }
+
+        .hero-search-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(255, 69, 58, 0.6);
+            background: linear-gradient(135deg, #ff5747 0%, #ff1f4b 100%);
+        }
+
+        /* ====================================================================
+           SINGLE HORIZONTAL ROW: FLEET VELOCITY & TELEMETRY CONTROLS
+           ==================================================================== */
+        .hero-controls-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            margin-bottom: 6px;
+        }
+
+        /* ONE SINGLE HORIZONTAL LINE on desktop (align-items: center, flex-wrap: nowrap) */
+        .fleet-velocity-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+            gap: 5px;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2px 0;
+            box-sizing: border-box;
+            white-space: nowrap;
+        }
+
+        .velocity-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-right: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .speed-chip-btn {
+            background: rgba(13, 19, 33, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #cbd5e1;
+            padding: 5px 11px;
+            border-radius: var(--radius-pill);
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            white-space: nowrap;
+            flex-shrink: 0;
+            line-height: 1.25;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .speed-chip-btn:hover {
+            border-color: rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* Active Speed Chip (Red/Coral Gradient matching Reference) */
+        .speed-chip-btn.active {
+            background: linear-gradient(135deg, #ff453a 0%, #ff2d55 100%);
+            border-color: #ff453a;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(255, 69, 58, 0.45);
+        }
+
+        .btn-race-across {
+            background: rgba(13, 19, 33, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            color: #38bdf8;
+        }
+
+        .btn-race-across:hover {
+            background: rgba(56, 189, 248, 0.18);
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+            color: #ffffff;
+        }
+
+        /* Telemetry Indicators aligned in same single row */
+        .hud-stat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4.5px 10px;
+            border-radius: var(--radius-pill);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            white-space: nowrap;
+            flex-shrink: 0;
+            line-height: 1.25;
+        }
+
+        .hud-speed {
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            color: #38bdf8;
+        }
+
+        .hud-speed-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #38bdf8;
+            box-shadow: 0 0 8px #38bdf8;
+            animation: pulseCyan 1.2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulseCyan {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+        }
+
+        .hud-eta {
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            color: #fbbf24;
+        }
+
+        .hud-fresh {
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.45);
+            color: #34d399;
+        }
+
+        @media (max-width: 900px) {
+            .fleet-velocity-bar {
+                justify-content: flex-start;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 6px;
+                scrollbar-width: none;
+            }
+            .fleet-velocity-bar::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        /* Popular Search Chips */
+        .hero-popular-tags {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .popular-label {
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .popular-chip {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            padding: 3px 12px;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 11.5px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .popular-chip:hover {
+            background: rgba(255, 69, 58, 0.2);
+            border-color: rgba(255, 69, 58, 0.45);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* ====================================================================
+           SIGNATURE FEATURE: HIGHWAY TRACK WITH MOVING ELECTRIC SUPERBIKES
+           ==================================================================== */
+        .highway-track-section {
+            position: relative;
+            width: 100%;
+            height: 124px;
+            margin-top: 22px;
+            overflow: hidden;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7) inset, 0 4px 18px rgba(0, 0, 0, 0.35);
+            mask-image: linear-gradient(180deg, transparent 0%, black 16%, black 86%, transparent 100%);
+            -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 16%, black 86%, transparent 100%);
+        }
+
+        /* Cinematic Night Highway Background (City Skyline & Bridge) */
+        .highway-backdrop {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/images/city-highway-night.jpg');
+            background-size: cover;
+            background-position: center bottom;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .highway-overlay-vignette {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(5, 8, 17, 0.7) 0%, rgba(5, 8, 17, 0.2) 40%, rgba(5, 8, 17, 0.75) 100%);
+            pointer-events: none;
+        }
+
+        /* Scrolling Dashed Lane Lines */
+        .highway-dashed-lines {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 200%;
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(255, 215, 0, 0.85) 0px,
+                rgba(255, 215, 0, 0.85) 45px,
+                transparent 45px,
+                transparent 90px
+            );
+            animation: highwayDashScroll calc(var(--road-dur) * 1.5) linear infinite;
+        }
+
+        @keyframes highwayDashScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-90px); }
+        }
+
+        /* Wet Asphalt Specular Road Reflections */
+        .highway-asphalt-sheen {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 180, 50, 0.08) 50%, rgba(5, 8, 17, 0.8) 100%);
+            pointer-events: none;
+        }
+
+        /* Active Moving Superbikes (Convoy in Action) */
+        .highway-bike-rig {
+            position: absolute;
+            bottom: 15px;
+            width: 130px;
+            height: 74px;
+            will-change: transform;
+            z-index: 5;
+            pointer-events: none;
+            left: 0;
+            transform: translate3d(-220px, 0, 0);
+        }
+
+        /* Bike 1: Lead Superbike (smooth continuous fluid cruise) */
+        .bike-lead {
+            bottom: 14px;
+            animation: driveFleetLead var(--bike-drive-dur) linear infinite;
+        }
+
+        @keyframes driveFleetLead {
+            0% { transform: translate3d(-220px, 0, 0); }
+            100% { transform: translate3d(calc(100vw + 140px), 0, 0); }
+        }
+
+        /* Bike 2: Partner Courier Superbike (cruising slightly behind with natural offset) */
+        .bike-second {
+            bottom: 24px;
+            opacity: 0.92;
+            animation: driveFleetSecond calc(var(--bike-drive-dur) * 1.35) linear infinite 4.2s;
+        }
+
+        @keyframes driveFleetSecond {
+            0% { transform: translate3d(-220px, 0, 0) scale(0.86); }
+            100% { transform: translate3d(calc(100vw + 140px), 0, 0) scale(0.86); }
+        }
+
+        /* Race Across Super Nitro Mode */
+        .highway-bike-rig.race-active {
+            animation: raceSprintAcross 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+            z-index: 20;
+        }
+
+        @keyframes raceSprintAcross {
+            0% { transform: translate3d(-160px, 0, 0) scale(1.1); }
+            100% { transform: translate3d(calc(100vw + 180px), 0, 0) scale(1.1); }
+        }
+
+        .superbike-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .superbike-png {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.85));
+            animation: bikeIdleBounce 0.22s ease-in-out infinite alternate;
+        }
+
+        @keyframes bikeIdleBounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-1.5px); }
+        }
+
+        /* Refined Headlight Beam */
+        .bike-headlight {
+            position: absolute;
+            right: -92px;
+            top: 25px;
+            width: 105px;
+            height: 36px;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.75) 0%, rgba(56, 189, 248, 0.22) 45%, transparent 100%);
+            clip-path: polygon(0 42%, 100% 0, 100% 100%, 0 58%);
+            pointer-events: none;
+            filter: blur(1.5px);
+        }
+
+        /* Taillight Flare */
+        .bike-taillight {
+            position: absolute;
+            left: 12px;
+            top: 32px;
+            width: 16px;
+            height: 6px;
+            background: #ff3b30;
+            border-radius: 50%;
+            box-shadow: -15px 0 20px #ff3b30, -30px 0 35px rgba(255, 59, 48, 0.5);
+            pointer-events: none;
+        }
+
+        /* Underglow Neon */
+        .bike-underglow {
+            position: absolute;
+            bottom: 4px;
+            left: 20px;
+            right: 20px;
+            height: 10px;
+            background: rgba(56, 189, 248, 0.7);
+            border-radius: 50%;
+            filter: blur(6px);
+            pointer-events: none;
+        }
+
+        /* Nitro Flame (Active in Nitro / Sprint) */
+        .bike-nitro-fire {
+            position: absolute;
+            left: -22px;
+            top: 33px;
+            width: 28px;
+            height: 7px;
+            background: linear-gradient(90deg, transparent 0%, #38bdf8 30%, #ec4899 70%, #ff4b5a 100%);
+            border-radius: var(--radius-pill);
+            opacity: 0;
+            filter: blur(1px);
+            transition: opacity 0.25s;
+            pointer-events: none;
+        }
+
+        .speed-nitro .bike-nitro-fire,
+        .race-active .bike-nitro-fire {
+            opacity: 1;
+            animation: nitroFlicker 0.08s infinite alternate;
+        }
+
+        @keyframes nitroFlicker {
+            0% { transform: scaleX(0.85) scaleY(0.9); }
+            100% { transform: scaleX(1.3) scaleY(1.2); }
+        }
+
+        /* ====================================================================
+           BOTTOM SERVICE-BENEFIT CARDS (Exact Match to Reference Image)
+           ==================================================================== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            width: 100%;
+            max-width: 1280px;
+            margin: 28px auto 36px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+        .feature-card {
+            background: rgba(13, 19, 33, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            height: 100%;
+            min-height: 76px;
+            box-sizing: border-box;
+            transition: all 0.25s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(255, 255, 255, 0.24);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon-box.icon-red {
+            background: rgba(255, 69, 58, 0.15);
+            color: #ff453a;
+            border: 1px solid rgba(255, 69, 58, 0.3);
+        }
+
+        .feature-icon-box.icon-green {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .feature-icon-box.icon-gold {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .feature-icon-box.icon-blue {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .feature-title {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .feature-desc {
+            color: #94a3b8;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* ====================================================================
+           RESPONSIVE DESIGN ADAPTATIONS
+           ==================================================================== */
+        @media (max-width: 1340px) {
+            .decor-plate {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 1340px) {
+            .floating-food-card,
+            .decor-plate {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner {
+                padding: 18px 14px 16px;
+                min-height: auto;
+            }
+            .hero-headline {
+                font-size: 27px;
+            }
+            .hero-search-card {
+                flex-direction: column;
+                border-radius: 18px;
+                padding: 12px;
+                gap: 10px;
+            }
+            .hero-location-container {
+                width: 100%;
+            }
+            .hero-location-pill {
+                width: 100% !important;
+                justify-content: center !important;
+                border-radius: var(--radius-pill) !important;
+                padding: 10px 16px !important;
+            }
+            .location-dropdown {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 100% !important;
+            }
+            .hero-search-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                padding: 0 14px;
+            }
+            .highway-track-section {
+                height: 100px;
+            }
+            .highway-bike-rig {
+                width: 105px;
+                height: 60px;
+            }
+        }
+
+    
+        /* Accessibility: Prefers-Reduced-Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .highway-bike-rig,
+            .highway-dashed-lines,
+            .superbike-png,
+            .bike-headlight,
+            .bike-taillight,
+            .bike-underglow,
+            .bike-nitro-fire,
+            .floating-food-card,
+            .hud-speed-dot,
+            .pulse-dot {
+                animation: none !important;
+                transition: none !important;
+            }
+            .bike-lead {
+                transform: translate3d(20vw, 0, 0) !important;
+            }
+            .bike-second {
+                display: none !important;
+            }
+        }
+</style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="navbar" style="padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; background: rgba(10, 14, 26, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px);">
+        <a href="javascript:void(0)" class="brand-logo" style="text-decoration:none; display:flex; align-items:center; gap:10px; color:#fff; font-size:20px; font-weight:800;">
+            <div class="logo-symbol" style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#ff3b30,#ff9500); display:flex; align-items:center; justify-content:center; font-size:18px;">🍲</div>
+            <span>FoodHouse<span style="color:#ff3b30;">.</span></span>
+        </a>
+
+        <!-- Centered Capsule Nav Pills (Ref Match) -->
+        <nav class="nav-center-pills" aria-label="Main Navigation">
+            <a href="javascript:void(0)" class="nav-pill active">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                <span>Home</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                <span>Restaurants</span>
+            </a>
+            <a href="javascript:void(0)" onclick="quickSearch('Pizza')" class="nav-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                <span>Offers</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>Track Order</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>About</span>
+            </a>
+        </nav>
+
+        <div style="display:flex; align-items:center; gap:10px;">
+            <a href="javascript:void(0)" style="display:flex; align-items:center; gap:8px; padding:8px 18px; border-radius:9999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#fff; text-decoration:none; font-weight:700; font-size:13px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span>Cart (0)</span>
+            </a>
+            <a href="javascript:void(0)" style="display:flex; align-items:center; gap:8px; padding:8px 18px; border-radius:9999px; background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05)); border:1px solid rgba(255,255,255,0.18); color:#fff; text-decoration:none; font-weight:700; font-size:13px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span>Login</span>
+            </a>
+        </div>
+    </header>
+
+            <!-- ================= HERO RUNNING BANNER: FOODHOUSE CINEMATIC ================= -->
+    <section class="hero-banner" id="heroBannerSection">
+        <!-- Ambient Stars -->
+        <div class="hero-ambient-stars" aria-hidden="true"></div>
+
+        <!-- 1. LIVE FLEET DISPATCH TICKER (Ref Match) -->
+        <div class="live-dispatch-ticker">
+            <span class="ticker-tag">
+                <span class="ticker-dot"></span>
+                LIVE FLEET DISPATCH
+            </span>
+            <span class="ticker-divider">|</span>
+            <span id="liveTickerText" class="ticker-message">Order #FH-8943 • Royal Chicken Biryani & Paneer Tikka dispatched to Indiranagar • Rider: Suresh K. (⭐ 4.98) • ETA: 12 mins</span>
+        </div>
+
+        <!-- 2. FLEET BADGE PILL (Ref Match) -->
+        <div class="hero-badge-pill">
+            ⚡ NEXT-GEN 100% ELECTRIC HIGH-SPEED DELIVERY FLEET
+        </div>
+
+        <!-- 3. SYMMETRICAL FLOATING GOURMET FOOD CARDS (Flanking Desktop View) -->
+        <!-- Left: Royal Chicken Dum Biryani -->
+        <a href="javascript:void(0)" onclick="quickSearch('Biryani')" class="floating-food-card card-left" aria-label="View Royal Chicken Dum Biryani">
+            <div class="food-thumb-circle">
+                <img src="assets/images/biryani-dish.jpg" alt="Royal Chicken Dum Biryani" class="food-thumb-img">
+            </div>
+            <div class="food-card-details">
+                <div class="food-card-title">Royal Chicken Dum Biryani</div>
+                <div class="food-card-meta-row">
+                    <span class="badge-hot">🔥 100% Hot</span>
+                    <span class="badge-star">⭐ 4.9</span>
+                    <span class="badge-time">🕒 20 mins</span>
+                </div>
+            </div>
+            <div class="card-arrow-circle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+        </a>
+
+        <!-- Outer Decorative Biryani Plate (Lower Left) -->
+        <div class="decor-plate decor-plate-left" aria-hidden="true">
+            <img src="assets/images/biryani-dish.jpg" alt="" class="decor-plate-img">
+        </div>
+
+        <!-- Right: Woodfired Truffle Pizza -->
+        <a href="javascript:void(0)" onclick="quickSearch('Pizza')" class="floating-food-card card-right" aria-label="View Woodfired Truffle Pizza">
+            <div class="food-card-details">
+                <div class="food-card-title">Woodfired Truffle Pizza</div>
+                <div class="food-card-meta-row">
+                    <span class="badge-courier">⚡ Express Courier</span>
+                    <span class="badge-star">⭐ 4.8</span>
+                    <span class="badge-time">🕒 15 mins</span>
+                </div>
+            </div>
+            <div class="card-arrow-circle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+            <div class="food-thumb-circle">
+                <img src="assets/images/truffle-pizza.jpg" alt="Woodfired Truffle Pizza" class="food-thumb-img">
+            </div>
+        </a>
+
+        <!-- Outer Decorative Pizza Plate (Lower Right) -->
+        <div class="decor-plate decor-plate-right" aria-hidden="true">
+            <img src="assets/images/truffle-pizza.jpg" alt="" class="decor-plate-img">
+        </div>
+
+        <!-- 4. CENTERED HERO HEADLINE, SEARCH & CONTROLS -->
+        <div class="hero-container">
+            <h1 class="hero-headline">
+                Craving something delicious?<br>
+                <span class="hero-brand-foodhouse">FoodHouse</span> <span class="hero-brand-delivers">delivers it fast.</span>
+            </h1>
+
+            <p class="hero-subtext">
+                Hyper-speed delivery powered by FoodHouse smart electric superbikes. Fresh gourmet flavors, verified hygienic kitchens, delivered piping-hot right to your doorstep.
+            </p>
+
+            <!-- Location & Food Search Bar -->
+            <div class="hero-search-card">
+                <div class="hero-location-container">
+                    <button type="button" class="hero-location-pill" id="heroLocationPill" onclick="toggleLocationDropdown(event)" aria-haspopup="listbox" aria-expanded="false" aria-label="Selected Delivery Location: Bangalore">
+                        <svg class="icon-pin" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span id="selectedLocationLabel">All Bangalore</span>
+                        <svg class="icon-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="location-dropdown" id="locationDropdown" role="listbox" aria-label="Select Delivery Location">
+                        <button type="button" class="location-option active" role="option" onclick="selectLocation('All', 'All Bangalore', event)">
+                            <span>📍 All Bangalore</span>
+                            <span class="loc-badge">30 spots</span>
+                        </button>
+                        <button type="button" class="location-option" role="option" onclick="selectLocation('Indiranagar', 'Indiranagar', event)">
+                            <span>Indiranagar</span>
+                            <span class="loc-badge">6 spots</span>
+                        </button>
+                        <button type="button" class="location-option" role="option" onclick="selectLocation('Koramangala', 'Koramangala', event)">
+                            <span>Koramangala</span>
+                            <span class="loc-badge">6 spots</span>
+                        </button>
+                        <button type="button" class="location-option" role="option" onclick="selectLocation('HSR Layout', 'HSR Layout', event)">
+                            <span>HSR Layout</span>
+                            <span class="loc-badge">3 spots</span>
+                        </button>
+                        <button type="button" class="location-option" role="option" onclick="selectLocation('Church Street', 'MG Road / Church St', event)">
+                            <span>MG Road / Church St</span>
+                            <span class="loc-badge">4 spots</span>
+                        </button>
+                        <button type="button" class="location-option" role="option" onclick="selectLocation('Jayanagar', 'Jayanagar', event)">
+                            <span>Jayanagar</span>
+                            <span class="loc-badge">2 spots</span>
+                        </button>
+                        <button type="button" class="location-option" role="option" onclick="selectLocation('Malleshwaram', 'Malleshwaram', event)">
+                            <span>Malleshwaram</span>
+                            <span class="loc-badge">2 spots</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="search-input-wrap">
+                    <svg class="icon-glass" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="heroSearchInput" class="hero-search-input" 
+                           placeholder="Search restaurant, dish, or cuisine (Biryani, Dosa, Pizza...)"
+                           oninput="syncHeroSearch(this.value)"
+                           onkeydown="if(event.key === 'Enter') triggerHeroSearch()"
+                           aria-label="Search food, dish, or restaurant">
+                </div>
+                <button type="button" class="hero-search-btn" onclick="triggerHeroSearch()" aria-label="Find Food">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Find Food</span>
+                </button>
+            </div>
+
+            <!-- Controls Stack: 1 Single Horizontal Row Fleet Velocity Controls -->
+            <div class="hero-controls-stack">
+                <div class="fleet-velocity-bar" role="group" aria-label="Fleet Velocity Controls">
+                    <span class="velocity-label">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        Fleet Velocity:
+                    </span>
+                    <button type="button" class="speed-chip-btn" id="btnCruise" onclick="setBannerSpeed('normal', this)">🌱 Eco 40 km/h</button>
+                    <button type="button" class="speed-chip-btn active" id="btnTurbo" onclick="setBannerSpeed('turbo', this)">⚡ Express 65 km/h</button>
+                    <button type="button" class="speed-chip-btn" id="btnNitro" onclick="setBannerSpeed('nitro', this)">🚀 Hyper 95 km/h</button>
+                    <button type="button" class="speed-chip-btn btn-race-across" onclick="triggerRaceAcross()">🏆 Race Delivery</button>
+                    <div class="hud-stat-pill hud-speed" title="Fleet Cruising Speed">
+                        <span class="hud-speed-dot"></span>
+                        <span id="hudSpeedometer"><strong>SPEED:</strong> 65 KM/H</span>
+                    </div>
+                    <div class="hud-stat-pill hud-eta" title="Estimated Time of Arrival">
+                        <span>🕒</span>
+                        <span id="hudEta"><strong>ETA:</strong> 12 MINS</span>
+                    </div>
+                    <div class="hud-stat-pill hud-fresh" title="Kitchen Quality Standards">
+                        <span>🔥</span>
+                        <span>100% Hot & Steaming</span>
+                    </div>
+                </div>
+
+                <!-- Row 3: Popular Searches Chips -->
+                <div class="hero-popular-tags">
+                    <span class="popular-label">Popular searches:</span>
+                    <a href="javascript:void(0)" class="popular-chip" onclick="quickSearch('Biryani')">Biryani</a>
+                    <a href="javascript:void(0)" class="popular-chip" onclick="quickSearch('Pizza')">Pizza</a>
+                    <a href="javascript:void(0)" class="popular-chip" onclick="quickSearch('Burger')">Burgers</a>
+                    <a href="javascript:void(0)" class="popular-chip" onclick="quickSearch('South Indian')">South Indian</a>
+                    <a href="javascript:void(0)" class="popular-chip" onclick="quickSearch('Chinese')">Chinese</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. SIGNATURE FEATURE: DEDICATED HIGHWAY TRACK WITH MOVING ELECTRIC SUPERBIKES -->
+        <div class="highway-track-section" aria-hidden="true">
+            <div class="highway-backdrop" style="background-image: url('assets/images/city-highway-night.jpg');"></div>
+            <div class="highway-dashed-lines"></div>
+            <div class="highway-asphalt-sheen"></div>
+            <div class="highway-overlay-vignette"></div>
+
+            <!-- Lead FoodHouse Electric Superbike -->
+            <div class="highway-bike-rig bike-lead" id="movingBikeRig">
+                <div class="superbike-img-wrap">
+                    <div class="bike-headlight"></div>
+                    <div class="bike-taillight"></div>
+                    <div class="bike-underglow"></div>
+                    <div class="bike-nitro-fire"></div>
+                    <img src="assets/images/foodhouse-future-bike.png" alt="" class="superbike-png">
+                </div>
+            </div>
+
+            <!-- Second Convoy FoodHouse Electric Superbike -->
+            <div class="highway-bike-rig bike-second" id="movingBikeRig2">
+                <div class="superbike-img-wrap">
+                    <div class="bike-headlight"></div>
+                    <div class="bike-taillight"></div>
+                    <div class="bike-underglow"></div>
+                    <div class="bike-nitro-fire"></div>
+                    <img src="assets/images/foodhouse-future-bike.png" alt="" class="superbike-png">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 4 SERVICE-BENEFIT CARDS (Ref Match) ================= -->
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon-box icon-red">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            </div>
+            <div>
+                <div class="feature-title">30 Mins Delivery</div>
+                <div class="feature-desc">Superfast doorstep delivery</div>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon-box icon-green">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
+            <div>
+                <div class="feature-title">100% Hygienic</div>
+                <div class="feature-desc">Verified kitchen standards</div>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon-box icon-gold">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                </svg>
+            </div>
+            <div>
+                <div class="feature-title">Up to 40% OFF</div>
+                <div class="feature-desc">Exclusive app gourmet deals</div>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon-box icon-blue">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+            </div>
+            <div>
+                <div class="feature-title">4.5+ Top Rated</div>
+                <div class="feature-desc">Handpicked dining spots</div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="searchInput">
+
+    <script>
+        let currentLocationFilter = 'All';
+
+        function toggleLocationDropdown(event) {
+            if (event) event.stopPropagation();
+            const dropdown = document.getElementById('locationDropdown');
+            const pill = document.getElementById('heroLocationPill');
+            if (!dropdown) return;
+            const isOpen = dropdown.classList.toggle('show');
+            if (pill) pill.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        function selectLocation(locKey, locLabel, event) {
+            if (event) event.stopPropagation();
+            currentLocationFilter = locKey;
+            const labelEl = document.getElementById('selectedLocationLabel');
+            if (labelEl) labelEl.innerText = locLabel;
+
+            document.querySelectorAll('.location-option').forEach(opt => {
+                opt.classList.remove('active');
+                if (opt.textContent.includes(locLabel) || (locKey === 'All' && opt.textContent.includes('All Bangalore'))) {
+                    opt.classList.add('active');
+                }
+            });
+
+            const dropdown = document.getElementById('locationDropdown');
+            if (dropdown) dropdown.classList.remove('show');
+            const pill = document.getElementById('heroLocationPill');
+            if (pill) pill.setAttribute('aria-expanded', 'false');
+
+            console.log('Location selected:', locKey, locLabel);
+        }
+
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('locationDropdown');
+            const pill = document.getElementById('heroLocationPill');
+            if (dropdown && dropdown.classList.contains('show')) {
+                if (!dropdown.contains(e.target) && !pill.contains(e.target)) {
+                    dropdown.classList.remove('show');
+                    if (pill) pill.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+
+        function syncHeroSearch(query) {
+            const mainInput = document.getElementById('searchInput');
+            if (mainInput) mainInput.value = query;
+        }
+
+        function triggerHeroSearch() {
+            const heroInput = document.getElementById('heroSearchInput');
+            const val = heroInput ? heroInput.value.trim() : '';
+            console.log('FoodHouse Search triggered for:', val);
+        }
+
+        function quickSearch(cuisineName) {
+            const heroInput = document.getElementById('heroSearchInput');
+            if (heroInput) heroInput.value = cuisineName;
+            console.log('Quick cuisine search:', cuisineName);
+        }
+        function setBannerSpeed(mode, btnElement) {
+            const banner = document.getElementById('heroBannerSection');
+            const speedHud = document.getElementById('hudSpeedometer');
+            const etaHud = document.getElementById('hudEta');
+            
+            document.querySelectorAll('.speed-chip-btn').forEach(btn => btn.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+
+            if (!banner) return;
+            banner.classList.remove('speed-turbo', 'speed-nitro');
+
+            if (mode === 'turbo') {
+                banner.classList.add('speed-turbo');
+                if (speedHud) speedHud.innerHTML = '<strong>SPEED:</strong> 65 KM/H';
+                if (etaHud) etaHud.innerHTML = '<strong>ETA:</strong> 8 MINS ⚡';
+            } else if (mode === 'nitro') {
+                banner.classList.add('speed-nitro');
+                if (speedHud) speedHud.innerHTML = '<strong>SPEED:</strong> 95 KM/H 🔥';
+                if (etaHud) etaHud.innerHTML = '<strong>ETA:</strong> 4 MINS 🚀';
+            } else {
+                if (speedHud) speedHud.innerHTML = '<strong>SPEED:</strong> 40 KM/H';
+                if (etaHud) etaHud.innerHTML = '<strong>ETA:</strong> 12 MINS';
+            }
+        }
+
+        function triggerRaceAcross() {
+            const rig = document.getElementById('movingBikeRig');
+            const banner = document.getElementById('heroBannerSection');
+            const speedHud = document.getElementById('hudSpeedometer');
+            const etaHud = document.getElementById('hudEta');
+            if (!rig) return;
+
+            if (banner) banner.classList.add('speed-nitro');
+            if (speedHud) speedHud.innerHTML = '<strong>SPEED:</strong> 140 KM/H 🚀';
+            if (etaHud) etaHud.innerHTML = '<strong>ETA:</strong> 1 MIN 💨';
+
+            rig.classList.remove('race-active');
+            void rig.offsetWidth;
+            rig.classList.add('race-active');
+
+            setTimeout(() => {
+                rig.classList.remove('race-active');
+                const activeBtn = document.querySelector('.speed-chip-btn.active');
+                if (activeBtn && activeBtn.id === 'btnNitro') {
+                    if (banner) banner.classList.add('speed-nitro');
+                    if (speedHud) speedHud.innerHTML = '<strong>SPEED:</strong> 95 KM/H 🔥';
+                    if (etaHud) etaHud.innerHTML = '<strong>ETA:</strong> 4 MINS 🚀';
+                } else if (activeBtn && activeBtn.id === 'btnTurbo') {
+                    if (banner) banner.classList.add('speed-turbo');
+                    if (speedHud) speedHud.innerHTML = '<strong>SPEED:</strong> 65 KM/H';
+                    if (etaHud) etaHud.innerHTML = '<strong>ETA:</strong> 8 MINS ⚡';
+                } else {
+                    if (banner) banner.classList.remove('speed-nitro', 'speed-turbo');
+                    if (speedHud) speedHud.innerHTML = '<strong>SPEED:</strong> 40 KM/H';
+                    if (etaHud) etaHud.innerHTML = '<strong>ETA:</strong> 12 MINS';
+                }
+            }, 2000);
+        }
+
+        // Live Order Ticker
+        const simulatedOrders = [
+            "Order #FH-8942 • Royal Chicken Biryani & Paneer Tikka dispatched to Indiranagar • Rider: Suresh K. (⭐ 4.98) • ETA: 12 mins",
+            "Order #FH-8943 • Truffles All-American Burger & Seasoned Fries en route to Koramangala • Rider: Rajesh M. (⭐ 4.96) • ETA: 14 mins",
+            "Order #FH-8944 • Woodfired Pepperoni Pizza & Garlic Bread heading to HSR Layout • Rider: Arun V. (⭐ 4.99) • ETA: 16 mins",
+            "Order #FH-8945 • Vidyarthi Bhavan Crispy Masala Dosa & Filter Coffee to Jayanagar • Rider: Chetan P. (⭐ 4.97) • ETA: 11 mins",
+            "Order #FH-8946 • Dragon Hakka Noodles & Dim Sums dispatched to Whitefield • Rider: Deepa R. (⭐ 4.98) • ETA: 15 mins"
+        ];
+        let currentTickerIndex = 0;
+
+        setInterval(() => {
+            const tickerEl = document.getElementById('liveTickerText');
+            if (tickerEl) {
+                tickerEl.style.opacity = '0';
+                setTimeout(() => {
+                    currentTickerIndex = (currentTickerIndex + 1) % simulatedOrders.length;
+                    tickerEl.innerText = simulatedOrders[currentTickerIndex];
+                    tickerEl.style.opacity = '1';
+                }, 350);
+            }
+        }, 4500);
+    </script>
+</body>
+</html>
